@@ -4,6 +4,10 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.awt.Color;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import javax.imageio.stream.ImageInputStream;
 
 
 public class Decode {
@@ -33,9 +37,36 @@ public class Decode {
 
 // Guardar la imagen con la letra "A" oculta
         ImageIO.write(imagen, "png", new File("Ruta archivo"));
-
-
-
+        
+        try{
+            InputStream input = new FileInputStream("charmander.png");
+            
+            ImageInputStream imageInput = ImageIO.createImageInputStream(input);
+            BufferedImage imagenL = ImageIO.read(imageInput);
+            
+            int alto = imagenL.getHeight();
+            int ancho = imagenL.getWidth();
+            
+            System.out.println("Alto: "+ alto+"; Ancho: "+ ancho);
+            
+            for(int y=0; y<imagenL.getHeight();y++){
+                for(int x=0; x<imagenL.getWidth();x++){
+                    
+                    int srcPixel = imagenL.getRGB(x,y);
+                    
+                Color c = new Color(srcPixel);
+                
+                int valR = c.getRed();
+                int valG = c.getGreen();
+                int valB = c.getBlue();
+                System.out.print(" r: ["+ valR+"] g: ["+ valG+"] b: ["+ valB+"]");
+                
+                }
+                System.out.println("");
+            }
+        }
+        catch(Exception e){
+        }
     }
 
 
