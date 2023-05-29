@@ -19,11 +19,28 @@ public class Decode {
         Scanner teclado = new Scanner(System.in);
 
         //Guardar mensaje en matriz
-
-
         System.out.println("¿Qué frase desea ocultar?");
         String mensaje = teclado.next();
 
+        int filas = (int) Math.ceil((double) mensaje.length() * 8 / 3); // Obtener el número de filas necesario
+        int columnas = 3;
+        char[][] matriz = new char[filas][columnas];
+
+// Guardar los bits individuales en la matriz
+        int fila = 0;
+        int columna = 0;
+        for (int i = 0; i < mensaje.length(); i++) {
+            char letra = mensaje.charAt(i);
+            String binario = String.format("%8s", Integer.toBinaryString(letra)).replace(' ', '0');
+            for (int j = 0; j < binario.length(); j++) {
+                matriz[fila][columna] = binario.charAt(j);
+                columna++;
+                if (columna >= columnas) {
+                    columna = 0;
+                    fila++;
+                }
+            }
+        }
         byte[] ListaM = mensaje.getBytes();
         float largo = ListaM.length;
 
