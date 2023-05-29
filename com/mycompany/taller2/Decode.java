@@ -41,8 +41,6 @@ public class Decode {
                 }
             }
         }
-        byte[] ListaM = mensaje.getBytes();
-        float largo = ListaM.length;
 
 
         //Obtiene las dimensiones de la imagen
