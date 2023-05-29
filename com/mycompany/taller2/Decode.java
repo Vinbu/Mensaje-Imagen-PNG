@@ -1,5 +1,6 @@
 package com.mycompany.taller2;
 
+import java.util.Scanner;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -15,10 +16,33 @@ public class Decode {
         // Cargar la imagen desde un archivo
         BufferedImage imagen = ImageIO.read(new File("imagen.png"));
 
+        Scanner teclado = new Scanner(System.in);
+
+        //Guardar mensaje en matriz
+
+
+        System.out.println("¿Qué frase desea ocultar?");
+        String mensaje = teclado.next();
+
+        byte[] ListaM = mensaje.getBytes();
+        float largo = ListaM.length;
+
+
+        //Obtiene las dimensiones de la imagen
+        int alto = imagen.getHeight();
+        int ancho = imagen.getWidth();
+
+        for(int y=0; y<imagen.getHeight();y++){
+            for(int x=0; x<imagen.getWidth();x++){
+
+                int Pixel = imagen.getRGB(x,y);
+
+                Color c = new Color(Pixel);
+
 // Extraer los tres primeros píxeles
-        int color1 = imagen.getRGB(0, 0);
-        int color2 = imagen.getRGB(1, 0);
-        int color3 = imagen.getRGB(2, 0);
+                int color1 = c.getRed();
+                int color2 = c.getGreen();
+                int color3 = c.getBlue();
 
         // Obtener los bits de la letra "A"
         String bits = Integer.toBinaryString((int) 'A');
