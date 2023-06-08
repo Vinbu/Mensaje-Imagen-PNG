@@ -2,10 +2,9 @@ package com.mycompany.taller2;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("¿Deseas codificar o decodificar un mensaje? (Escribe 'encode' o 'decode')");
         String respuesta = args[0];
         String mensajeEntrada= "";
         String nombre_imagen= "";
@@ -22,7 +21,7 @@ public class Main {
             // Crear instancia de Decode y ejecutar el código
             nombre_imagen_final=args[1];
             Decode decode = new Decode();
-            decode.mainDecode();
+            decode.mainDecode(nombre_imagen_final);
         } else {
             System.out.println("Respuesta inválida. Ingresa 'encode' o 'decode'.");
         }

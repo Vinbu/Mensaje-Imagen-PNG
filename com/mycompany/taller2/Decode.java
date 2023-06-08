@@ -5,20 +5,18 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class Decode {
-    public void mainDecode(nombre_imagen_final){
+    public void mainDecode(String nombre_imagen_final) throws IOException{
 
         String imagePath = nombre_imagen_final;
-        int[] bitsArray = decode(nombre_imagen_final);
+        int[] bitsArray = decode(imagePath);
         String message = convertirbitsaletra(bitsArray);
         System.out.println("Mensaje extraído: " + message);
     }
-    public static int[] decode(String nombre_imagen_final) {
+    public static int[] decode(String imagePath) {
         try {
-            BufferedImage image = ImageIO.read(new File(nombre_imagen_final));
+            BufferedImage image = ImageIO.read(new File(imagePath));
             int width = image.getWidth();
             int height = image.getHeight();
             int[] bitsArray = new int[width*height*3];

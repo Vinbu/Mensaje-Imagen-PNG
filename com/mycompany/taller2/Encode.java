@@ -1,7 +1,5 @@
 package com.mycompany.taller2;
 
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -10,7 +8,7 @@ import java.util.Scanner;
 import javax.imageio.ImageIO;
 
 public class Encode {
-    public void mainEncode(String mensajeEntrada, String nombre_imagen, String nombre_imagen_final){
+    public void mainEncode(String mensajeEntrada, String nombre_imagen, String nombre_imagen_final) throws IOException{
         // Cargar la imagen desde un archivo
         BufferedImage imagen = ImageIO.read(new File(nombre_imagen));
 
