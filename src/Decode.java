@@ -1,18 +1,23 @@
-package com.mycompany.taller2;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+/**
+ *
+ */
 public class Decode {
     public void mainDecode(String nombre_imagen_final) throws IOException{
-
-        String imagePath = nombre_imagen_final;
-        int[] bitsArray = decode(imagePath);
-        String message = convertirbitsaletra(bitsArray);
-        System.out.println("Mensaje extraído: " + message);
+        try {
+            String imagePath = nombre_imagen_final;
+            int[] bitsArray = decode(imagePath);
+            String message = convertirbitsaletra(bitsArray);
+            System.out.println("Mensaje extraído: " + message);
+        }
+        catch(Exception e){
+            System.out.println("La imagen no se encuentra en el directorio");
+        }
     }
     public static int[] decode(String imagePath) {
         try {
@@ -75,4 +80,3 @@ public class Decode {
         return messageBuilder.toString();
     }
 }
-
