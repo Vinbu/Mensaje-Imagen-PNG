@@ -1,6 +1,21 @@
 import java.io.IOException;
+
+/**
+ * El objetivo de la clase es que el usuario pueda ingresar si desea Codificar [Encode]
+ * o Decodificar [Decode] la imagen
+ * Si el usuario desea Codificar, debe ingresar: java Main encode "Mensaje_para_ocultar" "Nombre_o_ruta _de_imagen" "Nombre_o_ruta _de_imagen_modificada"
+ * [Encode] IMPORTANTE respetar el orden: 1. "Mensaje_para_ocultar" 2."Nombre_o_ruta _de_imagen" 3. "Nombre_o_ruta _de_imagen_modificada"
+ * Y si desea Decodificar debe ingresar: java Main decode "Nombre_de_imagen_o_ruta" "Mensaje_para_ocultar"
+ * Por lo tanto es posible buscar y guardar la imagen escribiendo el nombre de la imagen o
+ * escribiendo la ruta de la misma.
+ */
 public class Main {
-    public static void main(String[] args) throws IOException, IOException {
+    /**
+     *
+     * @param args El usuario deberia ingresar "decode" y la ruta en donde se encuentra la imagen
+     *             o "encode",la ruta de la imagen, además del mensaje a ocultar y la ruta de la imagen nueva
+     */
+    public static void main(String[] args) throws IOException {
         try {
 
         String mensajeEntrada= "";

@@ -5,9 +5,15 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /**
- *
+ * La siguiente clase cumple la funcion de desencriptar un mensaje que se haya podido ocultar en
+ * los componentes RGB de una imagen que el usuario ingrese.
  */
 public class Decode {
+    /**
+     *
+     * @param nombre_imagen_final se ingresa el nombre de la imagen (si se encuentra en la carpeta src) o la ruta
+     *                            en donde se encuentra la imagen con el mensaje encriptado
+     */
     public void mainDecode(String nombre_imagen_final) throws IOException{
         try {
             String imagePath = nombre_imagen_final;

@@ -5,9 +5,22 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /**
+ *La siguiente clase cumple la funcion de codificar un mensaje en los componentes RGB de la imagen que
+ * se vaya a seleccionar, para luego exportar la imagen con el mensaje ya encriptado en la ruta que el
+ * usuario desee
  */
 public class Encode {
-    public void mainEncode(String mensajeEntrada, String nombre_imagen, String nombre_imagen_final) throws IOException{
+    /**
+     *
+     * @param mensajeEntrada aquí se ingresa el mensaje que el usuario desea encriptar
+     * @param nombre_imagen se ingresa el nombre de la imagen (si se encuentra en la carpeta src) o la ruta
+     *                      en donde se encuentra la imagen que desea encriptar
+     * @param nombre_imagen_final se ingresa el nombre de la imagen (si se encuentra en la carpeta src) o la ruta
+     *      *                      en donde se desea guardar la imagen con el mensaje encriptado
+     * @throws IOException sirve para advertir al usuario en caso de que haya ingresado una ruta de archivo incorrecta
+     */
+    public void mainEncode(String mensajeEntrada, String nombre_imagen,
+                           String nombre_imagen_final) throws IOException{
         try {
             // Cargar la imagen desde un archivo
             BufferedImage imagen = ImageIO.read(new File(nombre_imagen));
