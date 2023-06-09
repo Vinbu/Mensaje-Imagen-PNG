@@ -5,24 +5,25 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /**
- *La siguiente clase cumple la función de codificar un mensaje, en formato binario, ocultando
+ * La siguiente clase cumple la función de codificar un mensaje, en formato binario, ocultando
  * sus bits en los bits menos signifcativo de los componentes RGB de la imagen que
  * se vaya a seleccionar, para luego exportar la imagen con el mensaje ya encriptado con el nombre o
  * la ruta que el usuario desee
  */
 public class Encode {
     /**
-     *Este método cumple la función antes mencionada.
-     * @param mensajeEntrada aquí se ingresa el mensaje que el usuario desea encriptar
-     * @param nombre_imagen se ingresa el nombre de la imagen (si se encuentra en la carpeta "src") o la ruta
-     *                      en donde se encuentra la imagen que desea encriptar
+     * Este método cumple la función antes mencionada.
+     *
+     * @param mensajeEntrada      aquí se ingresa el mensaje que el usuario desea encriptar
+     * @param nombre_imagen       se ingresa el nombre de la imagen (si se encuentra en la carpeta "src") o la ruta
+     *                            en donde se encuentra la imagen que desea encriptar
      * @param nombre_imagen_final se ingresa el nombre de la imagen (guardándola en la carpeta "src") o la ruta
-     *      *                      en donde se desea guardar la imagen con el mensaje encriptado
+     *                            *                      en donde se desea guardar la imagen con el mensaje encriptado
      * @throws IOException sirve para advertir al usuario en caso de que haya ingresado una ruta de archivo
-     * o nombre de imagen incorrecta
+     *                     o nombre de imagen incorrecta
      */
     public void mainEncode(String mensajeEntrada, String nombre_imagen,
-                           String nombre_imagen_final) throws IOException{
+                           String nombre_imagen_final) throws IOException {
         try {
             // Cargar la imagen desde un archivo
             BufferedImage imagen = ImageIO.read(new File(nombre_imagen));
@@ -173,7 +174,7 @@ public class Encode {
             }
             ImageIO.write(imagen, "png", new File(nombre_imagen_final));
             System.out.println("La nueva imagen se ha guardado");
-        }catch (javax.imageio.IIOException e){
+        } catch (javax.imageio.IIOException e) {
             System.out.println("La imagen no se encuentra en el directorio, por favor considera el" +
                     " número de argumentos y que tu mensaje debe estar entre comillas");
         }

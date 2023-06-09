@@ -7,19 +7,21 @@ import javax.imageio.ImageIO;
 /**
  * La siguiente clase cumple la funcion de desencriptar un mensaje que se haya podido ocultar en
  * los bits menos significativos de los componentes RGB de una imagen que el usuario ingrese.
+ *
  * @author Vincent Bustamante, Dante Quezada
  */
 public class Decode {
     /**
      * Este método se encarga de recibir las variables e enviar los argumentos, por medio
      * de instancias, de los otros métodos de las clase.
+     *
      * @param nombre_imagen_final: Se ingresa el nombre de la imagen (si se encuentra en la carpeta src) o la ruta
-     *                            en donde se encuentra la imagen con el supuesto mensaje encriptado
-     * nota 1: Es importante señalar que este método recibe el argumento "imagepath" procesado por el método
-     * "covertirbitsaletra"
-     * @throws: se prevee que el usuario pueda ingresar una imagen no existente
+     *                             en donde se encuentra la imagen con el supuesto mensaje encriptado
+     *                             nota 1: Es importante señalar que este método recibe el argumento "imagepath" procesado por el método
+     *                             "covertirbitsaletra"
+     * @throws Exception se prevee que el usuario pueda ingresar una imagen no existente
      */
-    public void mainDecode(String nombre_imagen_final) throws IOException{
+    public void mainDecode(String nombre_imagen_final)throws Exception{
         try {
             String imagePath = nombre_imagen_final;
             int[] bitsArray = decode(imagePath);
@@ -29,8 +31,7 @@ public class Decode {
             } else {
                 System.out.println("Mensaje extraído: " + message);
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println("La imagen no se encuentra en el directorio");
         }
     }
@@ -40,16 +41,18 @@ public class Decode {
      * para extraer los bits menos significativos de los valores RGB para su
      * posterior procesamiento
      * }
+     *
      * @param imagePath: Corresponde a la ruta o nombre de la imagen recibida del método "mainDecode"
      * @return bitsArray: Devuelve la lista creada a partir de los bits extraídos
-     *         int[0]: Al ser un método "int" se agrega ese retorno para evitar errores
+     * int[0]: Al ser un método "int" se agrega ese retorno para evitar errores
+     * @throws IOException avisa al usuario si la imagen que busca no se encuentra
      */
-    public static int[] decode(String imagePath) {
+    public static int[] decode(String imagePath) throws IOException {
         try {
             BufferedImage image = ImageIO.read(new File(imagePath));
             int width = image.getWidth();
             int height = image.getHeight();
-            int[] bitsArray = new int[width*height*3];
+            int[] bitsArray = new int[width * height * 3];
             int index = 0;
 
             for (int y = 0; y < height; y++) {
@@ -85,8 +88,9 @@ public class Decode {
      * Este método se encarga de procesar los bits provenientes de la lista "bitsArray" para, en el caso
      * de encontrar un grupo de caracteres entre 3 signos "$" convertirlos a un formato "char" y así
      * obtener el mensaje
+     *
      * @param bitsArray: Corresponde a la lista de bits menos significativos de los valores RGB de los
-     *                 pixeles de la imagen.
+     *                   pixeles de la imagen.
      * @return messageBuilder.toString(): corresponde al mensaje en formato String
      * nota 1: Este metodo también tiene la capacidad "teórica" de omitir el caso de que la imagen no posea
      * un mensaje oculto
