@@ -8,6 +8,12 @@ encriptado.
 Luego es posible desencriptar el mensaje que se pueda 
 encontrar en alguna imagen.
 ***
+#### *(Previo)*
+*Al descargar el archivo vienen dos imagenes para que pueda
+probar el funcionamiento del programa, pero si lo desea 
+puede buscar cualquier PNG de internet.*
+***
+
 ### Modo de uso
 Antes de iniciar, si lo desea (no es obligatorio) 
 puede mover la imagen en la que desea encriptar el mensaje
