@@ -1,9 +1,9 @@
 # ESTEGANOGRAFIA
 ***
 El siguiente programa permite el ocultar o encriptar un 
-mensaje en los componentes RGB de una imagen 
+mensaje en los bits de los componentes RGB, de una imagen 
 ingresada por el usuario, para que luego este pueda 
-seleccionar donde guardar la nueva imagen con el mensaje 
+seleccionar donde o como guardar la nueva imagen con el mensaje 
 encriptado.
 Luego es posible desencriptar el mensaje que se pueda 
 encontrar en alguna imagen.
@@ -21,6 +21,6 @@ En caso de querer encriptar realice lo siguiente, escriba
 *java Main encode "mensaje" "nombre_o_ruta_imagen" "nombre_o
 _ruta_imagen_nueva""*
 
-Si desea encriptar escriba: *java Main decode "nombre_o_ruta_imagen"*
+Si desea encontrar el mensaje escriba: *java Main decode "nombre_o_ruta_imagen"*
 ***
 
