@@ -18,7 +18,7 @@ la ruta en donde descargó la imagen que desea encriptar o
 desencriptar. 
 
 En caso de querer encriptar realice lo siguiente, escriba
-*java Main encode "nombre_o_ruta_imagen" "mensaje" "nombre_o
+*java Main encode "mensaje" "nombre_o_ruta_imagen" "nombre_o
 _ruta_imagen_nueva""*
 
 Si desea encriptar escriba: *java Main decode "nombre_o_ruta_imagen"*
