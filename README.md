@@ -29,4 +29,7 @@ _ruta_imagen_nueva""*
 
 Si desea encontrar el mensaje escriba: *java Main decode "nombre_o_ruta_imagen"*
 ***
+### Java.Doc
+Para visualizar el total del Java.Doc debes acceder al archivo de navegador llamado "overview-tree"
+***
 
