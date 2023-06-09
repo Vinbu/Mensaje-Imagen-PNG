@@ -13,7 +13,11 @@ public class Decode {
             String imagePath = nombre_imagen_final;
             int[] bitsArray = decode(imagePath);
             String message = convertirbitsaletra(bitsArray);
-            System.out.println("Mensaje extraído: " + message);
+            if (message.isEmpty()) {
+                System.out.println("No se encontró ningún mensaje oculto en la imagen.");
+            } else {
+                System.out.println("Mensaje extraído: " + message);
+            }
         }
         catch(Exception e){
             System.out.println("La imagen no se encuentra en el directorio");
@@ -49,6 +53,7 @@ public class Decode {
 
             return bitsArray;
         } catch (IOException e) {
+            System.out.println("La imagen no existe en el directorio");
             e.printStackTrace();
         }
 
@@ -57,6 +62,8 @@ public class Decode {
     public static String convertirbitsaletra(int[] bitsArray) {
         StringBuilder messageBuilder = new StringBuilder();
         int contador = 0;
+        boolean foundPrintableChar = false;
+
         for (int i = 0; i < bitsArray.length; i += 8) {
             int byteValue = 0;
 
@@ -65,18 +72,30 @@ public class Decode {
                     byteValue = (byteValue << 1) | bitsArray[i + j];
                 }
             }
-            if (byteValue == 36){
+
+            if (byteValue == 36) {
                 contador++;
             }
-            if((contador == 3) && (byteValue != 36)){
-                messageBuilder.append((char) byteValue);
-            }
-            if (contador == 6){
-                break;
+
+            if ((contador == 3) && (byteValue != 36)) {
+                char character = (char) byteValue;
+                if (Character.isISOControl(character)) {
+                    break;
+                }
+                foundPrintableChar = true;
+                messageBuilder.append(character);
             }
 
+            if (contador == 6) {
+                break;
+            }
+        }
+
+        if (!foundPrintableChar) {
+            messageBuilder.setLength(0); // Reiniciar el StringBuilder
         }
 
         return messageBuilder.toString();
     }
+
 }

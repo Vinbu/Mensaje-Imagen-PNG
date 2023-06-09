@@ -5,7 +5,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /**
- *
  */
 public class Encode {
     public void mainEncode(String mensajeEntrada, String nombre_imagen, String nombre_imagen_final) throws IOException{
